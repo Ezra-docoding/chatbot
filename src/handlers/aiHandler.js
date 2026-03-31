@@ -18,6 +18,11 @@ const EXPRESS_LOAD_NOTE =
 // key: regex untuk mendeteksi dari reply AI, value: info folder + caption
 const IMAGE_TRIGGERS = [
   {
+    pattern: /berikut.*(promo|promosi)/i,
+    folder: "Promo",
+    text: "Berikut kak untuk promo bulan ini, mau pilih paket yang mana nih kak sebelum kehabisan 😁",
+  },
+  {
     pattern: /berikut.*(size chart boxy|sizechart boxy|ukuran boxy)/i,
     folder: "Size Chart Boxy",
     text: "Ini size chart jersey *boxy* Ayres Apparel kak! 📏\n\nJersey boxy punya potongan yang lebih longgar dan tampilan lebih kasual.\nKalau masih bingung mau pilih ukuran berapa, jangan ragu tanya ya 😊",

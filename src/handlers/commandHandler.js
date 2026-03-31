@@ -132,7 +132,7 @@ function getKatalogImages(folder, categoryName) {
     path: path.join(folderPath, f),
     caption:
       i === 0
-        ? `Ini katalog *${categoryName}* kak! 🔥\n\nSemua desain katalog kami tersedia dalam versi *lengan pendek* ya kak.\nKalau ada yang cocok, langsung kabarin kami ya 😊`
+        ? `Ini katalog *${categoryName}* kak! 🔥\n\nSemua desain katalog kami tersedia dalam versi *lengan pendek* ya kak, tapi kalau mau *lengan panjang* juga bisa dibuatkan.\nKalau ada yang cocok, langsung kabarin kami ya 😊`
         : "",
   }));
 }
@@ -678,6 +678,8 @@ function handleCommand(phone, text) {
 
   // ── Pricelist Jaket ───────────────────────────────────────────────────────────
   const pricelistJaketKeywords = [
+    "jaket",
+    "jacket",
     "harga jaket",
     "pricelist jaket",
     "price jaket",
@@ -738,12 +740,28 @@ function handleCommand(phone, text) {
   if (promoKeywords.some((k) => lower.includes(k))) {
     return imageResponse(
       "Promo",
-      "Ada kabar baik kak, cek promo terbaru dari Ayres Apparel di bawah ini 🎉\n\n" +
-        "Jangan sampai ketinggalan ya! Promo berlaku selama persediaan ada.\n" +
-        "Kalau ada yang ingin ditanyakan soal syarat promonya, langsung tanya aja 😊\n\n" +
-        "Ini infonya 👇",
+      "Berikut kak untuk promo bulan ini, mau pilih paket yang mana nih kak sebelum kehabisan 😁",
       "Maaf kak, info gambar promo belum tersedia. Hubungi admin untuk promo terkini ya 🙏",
     );
+  }
+
+  // ── COD ────────────────────────────────────────────────────────────────────────
+  const codKeywords = [
+    "cod",
+    "cash on delivery",
+    "bayar di tempat",
+    "bayar ditempat",
+    "bayar langsung",
+    "bayar waktu terima",
+    "bayar saat terima",
+  ];
+  if (codKeywords.some((k) => lower.includes(k))) {
+    return {
+      handled: true,
+      reply:
+        "Mohon maaf kak, sampai saat ini kita masih belum bisa melayani atau menerima pembayaran yang bersifat COD ya kak 🙏\n\n" +
+        "Untuk pembayaran bisa melalui transfer bank BCA atau QRIS ya kak 😊",
+    };
   }
 
   // ── Reseller ──────────────────────────────────────────────────────────────────
